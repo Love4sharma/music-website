@@ -84,9 +84,9 @@ async function signin(req,res){
             const options={
                 expires:new Date( Date.now() + 2*24*60*60*1000),
                 httpOnly:true,
-                secure:true,
+                    
             }
-            return res.cookie("mytoken",token,options).status(200).json({
+            return res.cookie("token",token,options).status(200).json({
                 message:"user logged in successfully",
                 token:token,
                 user:user

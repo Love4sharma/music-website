@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const dotenv=require('dotenv');
-dotenv.config();
+require('dotenv').config();
+const cookieParser = require('cookie-parser');
 
+app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
 
