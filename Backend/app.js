@@ -5,7 +5,11 @@ const mongoose = require('mongoose');
 const dotenv=require('dotenv');
 dotenv.config();
 
-const route=require('./routes/route');
+app.use(express.json())
+app.use(express.urlencoded({extended:true}));
+
+const songRoutes=require('./routes/songRoutes');
+const userRoutes=require('./routes/userRoutes');
 
 const port=process.env.PORT ||8080;
 
@@ -23,10 +27,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/music-app1')
 
 // function to add song in db
 
-seedDB();  //run one time only otherwise it will run on every refresh and data will added gain and again in DB
+// seedDB();  //run one time only otherwise it will run on every refresh and data will added gain and again in DB
 
-app.use(express.urlencoded({extended:true}));
-app.use(route);
+
+app.use(songRoutes,userRoutes);
 
 app.listen(port,()=>{
       console.log("server listening on 8080 port");
