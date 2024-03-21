@@ -15,8 +15,8 @@ async function upload(req, res) {
     try {
       const songFile = req.files.song;
       const imageFile=req.files.image;
-      console.log('Song details:', songFile);
-      console.log('image details ',imageFile);
+    //   console.log('Song details:', songFile);
+    //   console.log('image details ',imageFile);
         const { title, artist, genre } = req.body;
         
         const storage = getStorage(app);
