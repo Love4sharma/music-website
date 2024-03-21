@@ -7,7 +7,7 @@ const auth=require('../middlewares/auth');
 //mapping api's
 router.post('/signup',signup)
 router.post('/login',signin)
-router.get('/favourites',auth,(req,res)=>{
+router.get('/testRoute',auth,(req,res)=>{
     console.log(req.user.email);
     res.json({
 

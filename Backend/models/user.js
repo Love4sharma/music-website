@@ -14,7 +14,20 @@ const userSchema=new mongoose.Schema({
       password:{
             type:String,
             trim:true,
-      }
+      },
+      recentlyPlayed:[
+           {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Playlist'
+           }
+      ],
+      mostPlayed:[
+            {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Playlist'
+            }
+      ]
+
 });
 
 

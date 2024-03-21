@@ -3,18 +3,23 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
+
 const cookieParser = require('cookie-parser');
+
+
+
 
 app.use(cookieParser());
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname+'public')))
 
 const songRoutes=require('./routes/songRoutes');
 const userRoutes=require('./routes/userRoutes');
 
 const port=process.env.PORT ||8080;
 
-const seedDB = require('./seed');
+// const seedDB = require('./seed');
 
 mongoose.connect('mongodb://127.0.0.1:27017/music-app1')
 .then(()=>{
