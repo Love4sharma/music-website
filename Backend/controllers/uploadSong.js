@@ -13,22 +13,28 @@ const mm = require('music-metadata');
 
 async function upload(req, res) {
     try {
-      const songFile = req.file;
+      const songFile = req.files.song;
+      const imageFile=req.files.image;
       console.log('Song details:', songFile);
+      console.log('image details ',imageFile);
         const { title, artist, genre } = req.body;
         
         const storage = getStorage(app);
 
         try {
-            const path = await uploadSong(storage, songFile,title,genre);
-            const duration = await getSongDuration(songFile.buffer);
-            const url = await getDownloadURL(ref(storage, path));
+            const song_path = await uploadFile(storage, songFile,title,genre,'audio/mpeg');
+            const song_url = await getDownloadURL(ref(storage, song_path));
             
-            const resp = await song.create({ title, artist, genre, duration, path:url });
+            const image_path=await uploadFile(storage,imageFile,title,'image','image/jpeg')
+            const image_url=await getDownloadURL(ref(storage,image_path))
+
+            const duration = await getSongDuration(songFile[0].buffer);
+            
+            await song.create({ title, artist, genre, duration, audio_path:song_url ,image_path:image_url});
 
             return res.redirect('/upload');
         } catch (error) {
-            console.log("failed to upload to firebase");
+            console.log("failed to upload to firebase ");
             console.log(error.message);
             return res.status(500).json({ error: error.message });
         }
@@ -39,18 +45,18 @@ async function upload(req, res) {
 }
 
 // Function to upload song file
-async function uploadSong(storage, songFile ,title,genre) {
+async function uploadFile(storage, file ,title,genre,contentType) {
     try {
         // Create a reference to the storage location
         const storageRef = ref(storage, `${genre}/` + title);
 
-        const snapshot = await uploadBytes(storageRef, songFile.buffer, {
-            contentType: 'audio/mpeg' // Set the content type to audio/mpeg for MP3 files
+        const snapshot = await uploadBytes(storageRef, file[0].buffer, {
+            contentType: contentType 
         });
 
         // Log and return the full path
         const fullPath = snapshot.metadata.fullPath;
-        console.log("song uploaded successfully "+fullPath);
+        console.log("file uploaded successfully to firebase "+fullPath);
         return fullPath;
     } catch (error) {
         console.error('Error uploading song:', error);

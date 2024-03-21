@@ -17,14 +17,14 @@ const SongSchema = new mongoose.Schema({
           type: String,
           required: true
       },
-      path: {
+      audio_path: {
           type:String,
           required: true
       },
-    //   image:{
-    //     type: String,
-    //     required: true
-    //   }
+      image_path:{
+        type: String,
+        required: true
+      }
   });
 
 

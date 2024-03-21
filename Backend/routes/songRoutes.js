@@ -18,7 +18,9 @@ const upload1 = multer({ storage: storage });
 router.get('/upload',(req,res)=>{
     res.sendFile(path.join(__dirname, '../../public/upload.html'))
 });
-router.post('/upload', upload1.single('song'),upload)
+// router.post('/upload', upload1.single('song'),upload)
+router.post('/upload', upload1.fields([{ name: 'song', maxCount: 1 }, { name: 'image', maxCount: 1 }]), upload);
+
 
 
 router.get('/',)
