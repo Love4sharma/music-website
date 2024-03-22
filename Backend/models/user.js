@@ -12,14 +12,23 @@ const userSchema=new mongoose.Schema({
             required:true
       },
       password:{
-            type:Number,
+            type:String,
             trim:true,
-            required:true
-      }
+      },
+      recentlyPlayed:[
+           {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Playlist'
+           }
+      ],
+      mostPlayed:[
+            {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'Playlist'
+            }
+      ]
+
 });
 
 
-
-
-let User=mongoose.model('User',userSchema);
-module.exports=User;
+module.exports=mongoose.model('User',userSchema);
