@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Anybody:ital,wght@0,100..900;1,100..900&family=Foldit:wght@100..900&family=Londrina+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Anybody:ital,wght@0,100..900;1,100..900&family=Foldit:wght@100..900&family=Londrina+Shadow&family=Russo+One&display=swap');
+*{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+}
+
+.navbar{
+      position: sticky;
+      top: 0;
+      display: flex;
+      width: 100vw;
+      border: 2px solid green;
+      height: 70px;
+      align-items: center;
+      padding: 15px;
+      gap: 60px;
+      background-color: rgb(254, 254, 253);
+      border-bottom-color: gray;
+}
+
+.nav1{
+      display: flex;
+      background-color:white;
+      justify-content: center;
+      align-items: center;
+      width: 170px;
+      gap: 5px;
+      height: 45px;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+.logoimage{
+      width: 25px;
+      height: 30px;
+}
+
+.logo{
+      font-family: "Amarante", serif;
+      font-weight: 580;
+      font-style: normal;
+      font-size: 30px;
+      color: #022D58;
+}
+
+.section{
+      display: flex;
+      padding: 25px;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+}
+
+#search{
+      width: 900px;
+      height: 40px;
+      border-radius: 9px;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+
+      margin-left: 45px; 
+    background-image: url('https://img.icons8.com/?size=30&id=59878&format=png');
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 20px; /* Adjust the size of the icon as needed */
+    /* Other input styles as needed */
+}
+
+
+#login{
+      width: 150px;
+      /* border: 2px solid red; */
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+      cursor: pointer;
+      background-color: black;
+      color: white;
+      text-decoration: none;
+}
