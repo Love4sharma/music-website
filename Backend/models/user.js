@@ -1,34 +1,52 @@
-const mongoose= require('mongoose');
+const mongoose = require("mongoose");
 
-const userSchema=new mongoose.Schema({
-      email:{
-            type:String,
-            trim:true,
-            required:true
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  name: {
+    type: String,
+    trim: true,
+    required: true,
+  },
+  password: {
+    type: String,
+    trim: true,
+  },
+  recentlyPlayed: [
+    {
+      _id: { _id: false },
+      songid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Song",
       },
-      name:{
-            type:String,
-            trim:true,
-            required:true
+      playedAt: {
+        type: Date,
+        default: Date.now,
       },
-      password:{
-            type:String,
-            trim:true,
+    },
+  ],
+  mostPlayed: [
+    {
+      _id: { _id: false },
+      songid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Song",
       },
-      recentlyPlayed:[
-           {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Playlist'
-           }
-      ],
-      mostPlayed:[
-            {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:'Playlist'
-            }
-      ]
-
+      playCount: {
+        type: Number,
+        default: 0,
+      },
+    },
+  ],
+  favourites: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Song",
+    },
+  ],
 });
 
-
-module.exports=mongoose.model('User',userSchema);;
+module.exports = mongoose.model("User", userSchema);

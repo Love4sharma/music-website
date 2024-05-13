@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Anybody:ital,wght@0,100..900;1,100..900&family=Foldit:wght@100..900&family=Londrina+Shadow&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Anybody:ital,wght@0,100..900;1,100..900&family=Foldit:wght@100..900&family=Londrina+Shadow&family=Russo+One&display=swap');
+
+.logo{
+      font-family: "Amarante", serif;
+      font-weight: 400;
+      font-style: normal;
+      
+}
+
+.icons{
+      height: 2rem;
+      width: 2rem;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.songs::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Hide scrollbar for IE, Edge and Firefox */
+.songs{
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+
+audio::-webkit-media-controls-panel {
+      background-color: #899cf1;
+}
+
+audio::-webkit-media-controls-mute-button {
+      background-color: #B1D4E0;
+      border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button {
+      background-color: #B1D4E0;
+      border-radius: 50%;
+}
+
+audio::-webkit-media-controls-current-time-display {
+      width: 100px; /* Set the desired width */
+      /* Additional styling properties */
+}
+
+
